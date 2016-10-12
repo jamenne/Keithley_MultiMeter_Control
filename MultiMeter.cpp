@@ -44,9 +44,9 @@ int MultiMeter::GetUD(){
 
 void MultiMeter::Initialize(int masterUD, int pad){
 
-	cout << "START SourceMeter::Initialize" << endl;
+	cout << "START MultiMeter::Initialize" << endl;
 	cout << "-----------------------------" << endl;
-	cout << "Try to open SourceMeter device with pad=" << pad << endl;
+	cout << "Try to open MultiMeter device with pad=" << pad << endl;
 
 	// int ibdev(int board_index, int pad, int sad, int timeout, int send_eoi, int eos);
 	//_________________________________________________________________________________//
