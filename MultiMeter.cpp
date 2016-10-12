@@ -102,6 +102,73 @@ void MultiMeter::Initialize(int masterUD, int pad){
 
 }
 
+// Sets directly 4 Wire measurement with continous trigger
+void MultiMeter::Initialize4Wire(int masterUD, int pad){
+
+	cout << "START MultiMeter::Initialize" << endl;
+	cout << "-----------------------------" << endl;
+	cout << "Try to open MultiMeter device with pad=" << pad << endl;
+
+	// int ibdev(int board_index, int pad, int sad, int timeout, int send_eoi, int eos);
+	//_________________________________________________________________________________//
+	// ibdev() is used to obtain a device descriptor, which can then be used by other functions in the library.
+	// The argument board_index specifies which GPIB interface board the device is connected to. 
+	// The pad and sad arguments specify the GPIB address of the device to be opened (see ibpad() and ibsad()).
+	// The timeout for io operations is specified by timeout (see ibtmo()). 
+	// If send_eoi is nonzero, then the EOI line will be asserted with the last byte sent during writes (see ibeot()).
+	// Finally, the eos argument specifies the end-of-string character and whether or not its reception should terminate reads (see ibeos()).
+	int ud=ibdev(0,pad,0,20,1,/*1024*/1034);
+
+	if (iberr==0)
+	{
+		cout << "Success: ud="<< ud << endl;
+	}
+	else{
+		cout << "Initialization FAILED!" << endl;
+		exit (EXIT_FAILURE);
+	}
+
+	this->_ud=ud;
+
+	// int ibln(int ud, int pad, int sad, short *found_listener);
+	//____________________________________________________________//
+	// ibln() checks for the presence of a device, by attempting to address it as a listener.
+	// ud specifies the GPIB interface board which should check for listeners. If ud is a device descriptor, then the device's access board is used.
+	// The GPIB address to check is specified by the pad and sad arguments. pad specifies the primary address, 0 through 30 are valid values.
+	// sad gives the secondary address, and may be a value from 0x60 through 0x7e (96 through 126), or one of the constants NO_SAD or ALL_SAD. 
+	// NO_SAD indicates that no secondary addressing is to be used, and ALL_SAD indicates that all secondary addresses should be checked.
+	// If the board finds a listener at the specified GPIB address(es), then the variable specified by the pointer found_listener is set to a nonzero value.
+	// If no listener is found, the variable is set to zero.
+	// The board must be controller-in-charge to perform this function. 
+	// Also, it must have the capability to monitor the NDAC bus line (see iblines()).
+	short *foundLstn = new short;
+
+	ibln(masterUD, pad, 0,foundLstn);
+	if((*foundLstn)==0)
+	{
+	  cout << "Device not found for ud=" << ud << " and pad=" << pad << endl;
+	  cout << "Initialization FAILED!" << endl;
+	  return;
+	}
+	else cout << "Listener found." << endl;
+
+	// clear device
+	int returnval=ibclr(ud);
+	cout << "Device clear sent " << returnval << endl;
+
+	this->ResetDevice();
+
+	this->Set4WireFunction();
+
+	this->SetAutorange4Wire();
+
+	this->SetTriggerContinously();
+
+	cout << "MultiMeter Initialization finished." << endl;
+	cout << "------------------------------------" << endl;
+
+}
+
 void MultiMeter::ResetDevice(){
 	int returnval = ibwrt_string(this->_ud, "*RST");
 	cout << "Set default settings: " << returnval << endl;

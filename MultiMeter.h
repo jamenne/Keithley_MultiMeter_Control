@@ -26,6 +26,8 @@ public:
 	int GetUD();
 	void ResetDevice();
 	void Initialize(int masterUD, int pad);
+	void Initialize4Wire(int masterUD, int pad);
+
 	void SetACcurrent();
 	void SetDCcurrent();
 	void SetACvoltage();
