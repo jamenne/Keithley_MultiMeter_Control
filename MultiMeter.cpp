@@ -29,8 +29,6 @@ MultiMeter::MultiMeter()
 {
 
 _ud = 0;
-_value = 0;
-_temperature = -314;
 
 }
 

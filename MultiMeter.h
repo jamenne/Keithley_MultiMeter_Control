@@ -59,8 +59,6 @@ public:
 private:
 
 	int _ud;
-	double _value;
-	double _temperature;
 
 
 };
