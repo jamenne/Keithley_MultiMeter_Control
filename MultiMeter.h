@@ -13,6 +13,7 @@ Created by Janine Müller on 07.10.2016
 
 #include <string>
 #include <vector>
+#include "../LogFileDev/LogDev.h"
 
 using namespace std;
 
@@ -26,7 +27,6 @@ public:
 	int GetUD();
 	void ResetDevice();
 	void Initialize(int masterUD, int pad);
-	void Initialize4Wire(int masterUD, int pad);
 
 	void SetACcurrent();
 	void SetDCcurrent();
@@ -59,7 +59,7 @@ public:
 private:
 
 	int _ud;
-
+	LogDev _LogFile;
 
 };
 

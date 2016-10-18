@@ -1,8 +1,8 @@
 CXX		= g++
 CXXFLAGS	= -O2 -Wall 
 LDFLAGS		= -lgpib
-SRCFILES	= MultiMeter.cpp MultiMeterMain.cpp ../gpib/gpib.cpp
-OBJFILES    = MultiMeter.o MultiMeterMain.o ../gpib/gpib.o
+SRCFILES	= MultiMeter.cpp MultiMeterMain.cpp ../gpib/gpib.cpp ../LogFileDev/LogDev.cpp
+OBJFILES    = MultiMeter.o MultiMeterMain.o ../gpib/gpib.o ../LogFileDev/LogDev.o
 
 MultiMeter:		$(OBJFILES)
 		$(CXX) $(OBJFILES) $(LDFLAGS) -o $@
@@ -10,8 +10,6 @@ MultiMeter:		$(OBJFILES)
 clean:
 		rm -f $(OBJFILES) MultiMeter 
 
-MultiMeter.o:	MultiMeter.cpp MultiMeter.h ../gpib/gpib.h
+MultiMeter.o:	MultiMeter.cpp MultiMeter.h ../gpib/gpib.h ../LogFileDev/LogDev.h
 
-gpib.o:	../gpib/gpib.cpp ../gpib/gpib.h
-
-MultiMeterMain.o: MultiMeterMain.cpp MultiMeter.h ../gpib/gpib.h
+MultiMeterMain.o: MultiMeterMain.cpp MultiMeter.h ../gpib/gpib.h ../LogFileDev/LogDev.o
