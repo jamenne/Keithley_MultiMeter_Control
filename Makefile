@@ -10,6 +10,6 @@ MultiMeter:		$(OBJFILES)
 clean:
 		rm -f $(OBJFILES) MultiMeter 
 
-MultiMeter.o:	MultiMeter.cpp MultiMeter.h ../gpib/gpib.h ../LogFileDev/LogDev.h
+MultiMeter.o:	MultiMeter.cpp MultiMeter.h 
 
-MultiMeterMain.o: MultiMeterMain.cpp MultiMeter.h ../gpib/gpib.h ../LogFileDev/LogDev.o
+MultiMeterMain.o: MultiMeterMain.cpp MultiMeter.h 
