@@ -236,7 +236,7 @@ double MultiMeter::Read(){
 	stringstream out;
 	int returnval = ibwrt_string(this->_ud, ":READ?");
 	out << "Sent read command: " << returnval;
-	cout << out.str() << endl;
+	//cout << out.str() << endl;
 	//this->_LogFile.Write(out.str());
 	double result = ibrd_double(this->_ud);
 	//cout << "Read result: " << result << endl;
@@ -250,10 +250,10 @@ double MultiMeter::Fetch(){
 	stringstream out;
 	int returnval = ibwrt_string(this->_ud, ":FETCh?");
 	out << "Sent fetch command: " << returnval;
-	cout << out.str() << endl;
+	//cout << out.str() << endl;
 	//this->_LogFile.Write(out.str());
 	double result = ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 	return result;
 }
 
@@ -288,9 +288,9 @@ void MultiMeter::SetAutorange4Wire(){
 double MultiMeter::MeasureACcurrent(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:CURRent:AC?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -298,9 +298,9 @@ double MultiMeter::MeasureACcurrent(){
 double MultiMeter::MeasureDCcurrent(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:CURRent[:DC]?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -308,9 +308,9 @@ double MultiMeter::MeasureDCcurrent(){
 double MultiMeter::MeasureACvoltage(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:VOLTage:AC?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -318,9 +318,9 @@ double MultiMeter::MeasureACvoltage(){
 double MultiMeter::MeasureDCvoltage(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:VOLTage[:DC]?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -328,9 +328,9 @@ double MultiMeter::MeasureDCvoltage(){
 double MultiMeter::Measure2WireRes(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:RESistance?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -338,9 +338,9 @@ double MultiMeter::Measure2WireRes(){
 double MultiMeter::Measure4WireRes(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:FRESistance?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -348,9 +348,9 @@ double MultiMeter::Measure4WireRes(){
 double MultiMeter::MeasurePeriod(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:PERiod?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -358,9 +358,9 @@ double MultiMeter::MeasurePeriod(){
 double MultiMeter::MeasureFrequency(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:FREQuency?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -368,9 +368,9 @@ double MultiMeter::MeasureFrequency(){
 double MultiMeter::MeasureTemperature(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:TEMPerature?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -378,9 +378,9 @@ double MultiMeter::MeasureTemperature(){
 double MultiMeter::MeasureDiode(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:DIODe?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
@@ -388,9 +388,9 @@ double MultiMeter::MeasureDiode(){
 double MultiMeter::MeasureConinuity(){
 
 	int returnval = ibwrt_string(this->_ud, ":MEASure:CONTinuity?");
-	cout << "Sent measure command: " << returnval << endl;
+	//cout << "Sent measure command: " << returnval << endl;
 	double result=ibrd_double(this->_ud);
-	cout << "Read result: " << result << endl;
+	//cout << "Read result: " << result << endl;
 
 	return result;
 }
