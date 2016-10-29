@@ -43,7 +43,10 @@ int MultiMeter::GetUD(){
 
 void MultiMeter::Initialize(int masterUD, int pad){
 
-	this->_LogFile.Initialize("MultiMeter");
+	stringstream ss;
+	ss << "MultiMeter_" << pad;
+
+	this->_LogFile.Initialize(ss.str().c_str());
 
 	cout << "START MultiMeter::Initialize" << endl;
 	this->_LogFile.Write("START MultiMeter::Initialize");
